@@ -27,10 +27,16 @@ impl Location {
     /// Values from Moritz, H. Journal of Geodesy (2000) 74: 128. https://doi.org/10.1007/s001900050278
     const KILOMETERS: f64 = 6371.0087714;
     const MILES: f64 = 3958.76131603933;
+    const NAUTICAL_MILES: f64 = Self::MILES * 1.1508;
 
     /// Calculates the distance in miles between two points.
     pub fn distance_mi(&self, other: Location) -> f64 {
         Self::MILES * self.distance(other)
+    }
+
+    /// Calculates the distance in nautical miles between two points.
+    pub fn distance_nautical_mi(&self, other: Location) -> f64 {
+        Self::NAUTICAL_MILES * self.distance(other)
     }
 
     /// Calculates the distance in kilometers between two points.
